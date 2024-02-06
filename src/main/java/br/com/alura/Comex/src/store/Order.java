@@ -2,9 +2,10 @@ package store;
 
 import InfosUser.Client;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
-public class Order {
+public class Order implements Comparable<Order>{
     private long ID;
     private Client client;
     private double price;
@@ -49,13 +50,42 @@ public class Order {
         this.quantity = quantity;
     }
 
+    public boolean isCheaperThan(Order order){
+        if(this.price>order.price){
+            return true;
+        }else{
+            return false;
+
+        }
+
+    }
+    public BigDecimal Amount (){
+        BigDecimal b = new BigDecimal(price);
+        return BigDecimal.valueOf(b.doubleValue());
+    }
+
+    public boolean isMoreExpensiveThan(Order order){
+        if(this.price<order.price){
+            return true;
+        }else{
+            return false;
+
+        }
+
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "ID=" + ID +
                 ", client=" + client +
-                ", price=" + price +
+                ", price=" + this.Amount() +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Order order) {
+        return this.Amount().compareTo(order.Amount());
     }
 }
