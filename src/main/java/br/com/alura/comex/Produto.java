@@ -45,4 +45,10 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public void imprimirDadosDoProduto() {
+        System.out.println(">> Dados do produto");
+        System.out.println(":: Nome: " + getNome());
+        System.out.println(":: Descrição: " + getDescricao());
+    }
 }

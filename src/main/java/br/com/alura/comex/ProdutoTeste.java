@@ -11,5 +11,9 @@ public class ProdutoTeste {
         boolean saoIguais = produto1 == produto2;
 
         System.out.println("Sao iguais? " + saoIguais);
+
+        System.out.println("-".repeat(40));
+
+        produto1.imprimirDadosDoProduto();
     }
 }
