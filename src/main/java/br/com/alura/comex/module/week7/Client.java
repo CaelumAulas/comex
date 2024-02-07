@@ -1,4 +1,6 @@
-package br.com.alura.comex.module;
+package br.com.alura.comex.module.week7;
+
+import br.com.alura.comex.module.week7.Address;
 
 public class Client {
     private String name;
@@ -74,13 +76,13 @@ public class Client {
         this.address = address;
     }
 
-    public String getFullDescription(){
+    @Override
+    public String toString() {
         return "name: " + name +
                 "\ncpf: " + cpf +
                 "\nemail: " + email +
                 "\nprofession: " + profession +
                 "\ntelephone: " + telephone +
                 "\naddress: " + address;
-
     }
 }

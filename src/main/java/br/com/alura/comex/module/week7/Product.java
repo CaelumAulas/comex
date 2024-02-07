@@ -1,4 +1,4 @@
-package br.com.alura.comex.module;
+package br.com.alura.comex.module.week7;
 
 public class Product {
     private String name;
@@ -56,11 +56,11 @@ public class Product {
         this.amount = amount;
     }
 
-    public String getFullDescription(){
-        return "Name: " + name +
-                "\nDescription: " + description +
-                "\nUnitPrice: " + unitPrice +
-                "\nAmount: " + amount;
+    @Override
+    public String toString() {
+        return "name: " + name +
+                "\ndescription: " + description +
+                "\nunitPrice: " + unitPrice +
+                "\namount: " + amount;
     }
-
 }

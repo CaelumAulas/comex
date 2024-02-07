@@ -1,4 +1,4 @@
-package br.com.alura.comex.module;
+package br.com.alura.comex.module.week7;
 
 public class Address {
     private String neighborhood;
@@ -56,13 +56,13 @@ public class Address {
         this.number = number;
     }
 
-    public String getFullDescription(){
-        return "neighborhood: " + neighborhood +
-                "\ncity: " + city +
-                "\ncomplement: " + complement +
-                "\nstate: " + state +
-                "\nstreet: " + street +
-                "\nnumber: " + number;
-
+    @Override
+    public String toString() {
+        return street + "," +
+                number + "," +
+                complement + "," +
+                neighborhood + "," +
+                city + "," +
+                state;
     }
 }
