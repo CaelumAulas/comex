@@ -1,7 +1,6 @@
 package br.com.alura.comex.module;
 
 public class Client {
-
     private String name;
     private String cpf;
     private String email;
@@ -81,7 +80,7 @@ public class Client {
                 "\nemail: " + email +
                 "\nprofession: " + profession +
                 "\ntelephone: " + telephone +
-                "\naddress: " + address.getFullDescription();
+                "\naddress: " + address;
 
     }
 }

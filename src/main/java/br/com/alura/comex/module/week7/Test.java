@@ -1,4 +1,8 @@
-package br.com.alura.comex.module;
+package br.com.alura.comex.module.week7;
+
+import br.com.alura.comex.module.week7.Address;
+import br.com.alura.comex.module.week7.Client;
+import br.com.alura.comex.module.week7.Product;
 
 public class Test {
 
@@ -26,8 +30,8 @@ public class Test {
                 4.50,
                 20);
 
-        System.out.println(bottle.getFullDescription() + "\n");
-        System.out.println(fork.getFullDescription() + "\n");
+        System.out.println(bottle.toString() + "\n");
+        System.out.println(fork.toString() + "\n");
 
         double bottlePrice = bottle.getGrossValue();
         double forkPrice = fork.getGrossValue();
@@ -43,7 +47,7 @@ public class Test {
         clientAddress.setState("São Paulo");
         clientAddress.setStreet("Street Vergueiro");
         clientAddress.setNumber(3185);
-        System.out.println(clientAddress.getFullDescription() + "\n");
+        System.out.println(clientAddress.toString() + "\n");
 
         Client newClient = new Client("Ricardo",
                 "999.999.999-99",
@@ -54,8 +58,8 @@ public class Test {
 
         Client newClient2 = new Client("João",
                 "222.222.222-22");
-        System.out.println(newClient.getFullDescription() + "\n");
-        System.out.println(newClient2.getFullDescription() + "\n");
+        System.out.println(newClient.toString() + "\n");
+        System.out.println(newClient2.toString() + "\n");
     }
 
 }
