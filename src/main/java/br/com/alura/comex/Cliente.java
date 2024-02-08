@@ -8,14 +8,17 @@ public class Cliente {
     private String telefone;
     private Endereco endereco;
 
-    // Construtor da classe Cliente
-    public Cliente(String nome, String cpf, String email, String profissao, String telefone, Endereco endereco) {
+    // Construtor da classe Cliente com nome e cpf obrigatórios
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
+    // Construtor da classe Cliente com nome, cpf e e-mail obrigatórios
+    public Cliente(String nome, String cpf, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
-        this.profissao = profissao;
-        this.telefone = telefone;
-        this.endereco = endereco;
     }
 
     // Métodos getters e setters
