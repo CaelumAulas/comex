@@ -6,6 +6,10 @@ public class Produto {
     private float preco;
     private int qtd;
 
+    public Produto(String nome) {
+        this.nome = nome;
+    }
+
     public String getNome() {
         return nome;
     }
