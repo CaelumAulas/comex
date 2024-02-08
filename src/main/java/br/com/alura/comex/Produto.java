@@ -5,4 +5,10 @@ public class Produto {
     String desc;
     float preco;
     int qtd;
+
+    public void show() {
+        System.out.println(">> Dados do produto");
+        System.out.println(":: Nome: " + this.nome);
+        System.out.println(":: Descrição: " + this.desc);
+    }
 }
