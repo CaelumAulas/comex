@@ -1,18 +1,37 @@
 package br.com.alura.comex.module.week8;
 
 import br.com.alura.comex.module.week7.Client;
+import br.com.alura.comex.module.week7.Product;
 
-public class Order {
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+public class Order implements Comparable<Order>{
     private int id;
     private Client client;
     private double price;
-    private int amount;
+    private int amount = 1;
 
-    public Order(int id, Client client, double price, int amount){
-        this.id = id;
+    private Product product;
+    private LocalDate day;
+
+    public Order(){
+
+    }
+
+    public Order(Product product, Client client, double price, int year, int month, int day){
+        this.product = product;
+        this.client = client;
+        this.price = price;
+        this.day = LocalDate.of(year,month,day);
+    }
+
+    public Order(Product product, Client client, double price,int amount, int year, int month, int day){
+        this.product = product;
         this.client = client;
         this.price = price;
         this.amount = amount;
+        this.day = LocalDate.of(year,month,day);
     }
 
     public int getId() {
@@ -49,22 +68,37 @@ public class Order {
 
     @Override
     public String toString() {
-        return "id:" + id +
-                "\nclient:\n'" + client + "'" +
-                "\nprice: " + price +
-                "\namount: " + amount;
+        return "\n\nProduct:" + product.getName() +
+                "\nclient: " + client.getName() +
+                "\nprice: R$:" + getTotalPrice() +
+                "\nDate: " + day;
     }
 
-
-    public boolean CheaperThan(Pedido outroPedido) {
-
+    public boolean CheaperThan(Order otherOrder) {
+        if (this.price < otherOrder.price) {
+            return true;
+        } else{
+            return false;
+        }
     }
 
-    public boolean MoreExpensiveThan(Pedido outroPedido) {
-
+    public boolean MoreExpensiveThan(Order otherOrder){
+        if (this.price > otherOrder.price){
+            return true;
+        } else{
+            return false;
+        }
     }
 
-    public BigDecimal getValorTotal() {
-
+    public BigDecimal getTotalPrice() {
+        BigDecimal priceBigDecimal = BigDecimal.valueOf(this.price);
+        BigDecimal amountBigDecimal = BigDecimal.valueOf(this.amount);
+        return priceBigDecimal.multiply(amountBigDecimal);
     }
+
+    @Override
+    public int compareTo(Order otherOrder) {
+        return this.getTotalPrice().compareTo(otherOrder.getTotalPrice());
+    }
+
 }
