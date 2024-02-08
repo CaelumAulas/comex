@@ -13,6 +13,10 @@ public class Product {
         this.amount = 0;
     }
 
+    public Product(String name){
+        this.name = name;
+    }
+
     public Product(String name, String description, double unitPrice, int amount){
         this.name = name;
         this.description = description;
@@ -21,7 +25,7 @@ public class Product {
     }
 
     public String getName() {
-        return "Name: " + name;
+        return name;
     }
 
     public void setName(String name) {
@@ -29,15 +33,15 @@ public class Product {
     }
 
     public String getDescription() {
-        return "Description: " + description;
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getUnitPrice() {
-        return "UnitPrice: " + unitPrice;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
     public double getGrossValue(){
@@ -48,8 +52,8 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public String getAmount() {
-        return "Amount: " + amount;
+    public double getAmount() {
+        return amount;
     }
 
     public void setAmount(int amount) {
