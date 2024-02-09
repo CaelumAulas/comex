@@ -3,6 +3,9 @@ package store;
 import InfosUser.Client;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 public class Order implements Comparable<Order>{
@@ -10,6 +13,12 @@ public class Order implements Comparable<Order>{
     private Client client;
     private double price;
     private int quantity;
+    private LocalDateTime date;
+
+    public Order(){
+
+        this.date = LocalDateTime.now();
+    }
 
     public Order(Client client,double price,int quantity){
         Objects.requireNonNull(client,"NOT NULL CLIENT");
@@ -17,6 +26,8 @@ public class Order implements Comparable<Order>{
         this.client = client;
         this.price = price;
         this.quantity = quantity;
+        this.date = LocalDateTime.now();
+
 
 
     }
@@ -60,8 +71,11 @@ public class Order implements Comparable<Order>{
 
     }
     public BigDecimal Amount (){
-        BigDecimal b = new BigDecimal(price);
-        return BigDecimal.valueOf(b.doubleValue());
+        BigDecimal price = BigDecimal.valueOf(this.price);
+        BigDecimal quantity = BigDecimal.valueOf(this.quantity);
+        BigDecimal ValuesPrice =price.multiply(quantity);
+        return ValuesPrice;
+
     }
 
     public boolean isMoreExpensiveThan(Order order){
@@ -79,8 +93,10 @@ public class Order implements Comparable<Order>{
         return "Order{" +
                 "ID=" + ID +
                 ", client=" + client +
-                ", price=" + this.Amount() +
+                ", price=" + price +
                 ", quantity=" + quantity +
+                ", Amount=" + this.Amount() +
+                ", Date=" + date.atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) +
                 '}';
     }
 
