@@ -1,7 +1,6 @@
-package br.com.alura.comex.module.week8;
+package br.com.alura.comex.module.Classes;
 
-import br.com.alura.comex.module.week7.Client;
-import br.com.alura.comex.module.week7.Product;
+import br.com.alura.comex.module.Classes.Client;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

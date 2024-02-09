@@ -1,4 +1,4 @@
-package br.com.alura.comex.module.week7;
+package br.com.alura.comex.module.Classes;
 
 public class Product {
     private String name;

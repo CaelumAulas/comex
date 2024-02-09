@@ -1,8 +1,8 @@
-package br.com.alura.comex.module.week8;
+package br.com.alura.comex.module.Tests;
 
-import br.com.alura.comex.module.week7.Client;
-import br.com.alura.comex.module.week7.Product;
-import org.w3c.dom.ls.LSOutput;
+import br.com.alura.comex.module.Classes.Client;
+import br.com.alura.comex.module.Classes.Product;
+import br.com.alura.comex.module.Classes.Order;
 
 public class OrderTest {
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package br.com.alura.comex.module.week7;
+package br.com.alura.comex.module.Tests;
 
-import br.com.alura.comex.module.week7.Address;
-import br.com.alura.comex.module.week7.Client;
-import br.com.alura.comex.module.week7.Product;
+import br.com.alura.comex.module.Classes.Address;
+import br.com.alura.comex.module.Classes.Client;
+import br.com.alura.comex.module.Classes.Product;
 
 public class Test {
 
