@@ -15,6 +15,17 @@ public class Cliente {
     // podemos fazer com o Endereco, só que nesse caso nós recebemos um outro obejeto como atributo
     private Endereco endereco;
 
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
+    public Cliente(String nome, String cpf, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+    }
+
     public String getNome() {
         return nome;
     }
