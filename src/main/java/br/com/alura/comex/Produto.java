@@ -1,10 +1,10 @@
 package br.com.alura.comex;
 
 public class Produto{
-    String nome;
-    String descricao;
-    double precoUnitario;
-    int quantidade;
+    private String nome;
+    private String descricao;
+    private double precoUnitario;
+    private int quantidade;
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -39,8 +39,12 @@ public class Produto{
 
     }
 
+    public Produto(String nome) {
+        this.nome = nome;
+    }
+
     //Método para imprimir os dados do produto
-     void imprimirDados(){
+     public void imprimirDados(){
             System.out.println(">> Dados do produto");
             System.out.println(":: Nome: " + getNome());
             System.out.println(":: Descrição: " + getDescricao());
