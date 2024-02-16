@@ -41,7 +41,7 @@ public class Test {
         System.out.println(productsEquals + "\n");
 
         Address clientAddress = new Address();
-        clientAddress.setNeighborhood("Vila Mariana");
+        clientAddress.setDistrict("Vila Mariana");
         clientAddress.setCity("São Paulo");
         clientAddress.setComplement("Centro Empresarial Santa Júlia");
         clientAddress.setState("São Paulo");
@@ -60,6 +60,8 @@ public class Test {
                 "222.222.222-22");
         System.out.println(newClient.toString() + "\n");
         System.out.println(newClient2.toString() + "\n");
+
+
     }
 
 }

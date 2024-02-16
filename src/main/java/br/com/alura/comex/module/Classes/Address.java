@@ -1,19 +1,52 @@
 package br.com.alura.comex.module.Classes;
 
+import br.com.alura.comex.module.Classes.CEP.RecordCEP;
+
 public class Address {
-    private String neighborhood;
+    private String cep;
+    private String district;
     private String city;
     private String complement;
     private String state;
     private String street;
     private int number;
 
-    public String getNeighborhood() {
-        return neighborhood;
+    public Address(){
     }
 
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
+    public Address(RecordCEP recordCEPConstuctor){
+        this.cep = recordCEPConstuctor.cep();
+        this.street = recordCEPConstuctor.street();
+        this.complement = recordCEPConstuctor.complement();
+        this.district = recordCEPConstuctor.district();
+        this.city = recordCEPConstuctor.city();
+        this.state = recordCEPConstuctor.uf();
+    }
+
+    public Address(String cep, String street, String complement,
+                   String district, String city, String uf){
+        this.cep = cep;
+        this.street = street;
+        this.complement = complement;
+        this.district = district;
+        this.city = city;
+        this.state = uf;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getCity() {
@@ -56,12 +89,21 @@ public class Address {
         this.number = number;
     }
 
+    public String transformNumber(int number){
+        if (number == 0){
+            return "Number Not Found";
+        } else {
+            return String.valueOf(number);
+        }
+    }
+
     @Override
     public String toString() {
-        return street + "," +
-                number + "," +
+        return cep + "," +
+                street + "," +
+                transformNumber(number) + "," +
                 complement + "," +
-                neighborhood + "," +
+                district + "," +
                 city + "," +
                 state;
     }
