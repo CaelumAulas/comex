@@ -9,9 +9,6 @@ public class TestaCodigo {
     public static void main(String[] args) {
 
         Produto celular = new Produto("Samsung S12");
-        celular.quantidade = 10;
-        celular.descricao = "Celular novo, samsung";
-        celular.precoUnitario = 1000.90;
 
         System.out.println(celular);
         System.out.println("\n");
