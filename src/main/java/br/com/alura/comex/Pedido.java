@@ -72,4 +72,29 @@ public class Pedido {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public boolean isMaisBaratoQue(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0;
+    }
+
+    public boolean isMaisCaroQue(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0;
+    }
+
+    public BigDecimal getValorTotal() {
+        return this.preco.multiply(new BigDecimal(this.quantidade));
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", cliente=" + cliente.getNome() +
+                ", produto=" + produto.getNome() +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade +
+                ", data=" + data +
+                ", valorTotal=" + getValorTotal() +
+                '}';
+    }
 }
