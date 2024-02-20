@@ -5,58 +5,50 @@ import java.time.LocalDate;
 
 public class Pedido {
 
-    private String categoria;
-    private String produto;
-    private String cliente;
-
+    private int id;
+    private Cliente cliente;
     private BigDecimal preco;
     private int quantidade;
 
-    private LocalDate data;
+    public Pedido() {
+    };
 
-    public Pedido(String categoria, String produto, String cliente, BigDecimal preco, int quantidade, LocalDate data) {
-        this.categoria = categoria;
-        this.produto = produto;
+    public Pedido(int id, Cliente cliente, BigDecimal preco, int quantidade) {
+        this.id = id;
         this.cliente = cliente;
         this.preco = preco;
         this.quantidade = quantidade;
-        this.data = data;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public int getId() {
+        return id;
     }
 
-    public String getProduto() {
-        return produto;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCliente() {
+    public Cliente getCliente() {
         return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public BigDecimal getPreco() {
         return preco;
     }
 
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
 
-    public LocalDate getData() {
-        return data;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
-
-    @Override
-    public String toString() {
-        return "Pedido{" +
-                "categoria='" + categoria + '\'' +
-                ", produto='" + produto + '\'' +
-                ", cliente='" + cliente + '\'' +
-                ", preco=" + preco +
-                ", quantidade=" + quantidade +
-                ", data=" + data +
-                '}';
-    }
-
 }
