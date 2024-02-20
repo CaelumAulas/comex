@@ -10,14 +10,19 @@ public class Pedido {
     private BigDecimal preco;
     private int quantidade;
 
+    private Produto produto;
+    private LocalDate data;
+
     public Pedido() {
     };
 
-    public Pedido(int id, Cliente cliente, BigDecimal preco, int quantidade) {
+    public Pedido(int id, Cliente cliente, BigDecimal preco, int quantidade, Produto produto, LocalDate data) {
         this.id = id;
         this.cliente = cliente;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.produto = produto;
+        this.data = data;
     }
 
     public int getId() {
@@ -46,6 +51,22 @@ public class Pedido {
 
     public int getQuantidade() {
         return quantidade;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public void setQuantidade(int quantidade) {
