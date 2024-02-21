@@ -1,7 +1,13 @@
 package br.com.alura.comex;
 
-public class Cliente extends Endereco {
+public class Cliente {
 
+    private String cpf;
+    private String email;
+    private String profissao;
+    private String telefone;
+
+    private Endereco endereco;
     private String nome;
 
     public String getNome() {
@@ -52,31 +58,37 @@ public class Cliente extends Endereco {
         this.endereco = endereco;
     }
 
-    private String cpf;
-    private String email;
-    private String profissao;
-    private String telefone;
 
-    private Endereco endereco;
+    public Cliente(String nome, String cpf, String email, String profissao, String telefone, Endereco endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.profissao = profissao;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
-    public void setNomeCpf(String nome, String cpf){
+
+    public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
 
-    public void setNomeCpfEmail(String nome, String cpf, String email){
+
+    public Cliente(String nome, String cpf, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
     }
 
-    public void informa(){
+    public void informa() {
         System.out.println(">> Clientes");
-        System.out.println("Nome: "+getNome());
-        System.out.println("CPF: "+getCpf());
-        System.out.println("E-mail: "+getEmail());
-        System.out.println("Profissão: "+getProfissao());
-        System.out.println("Telefone: "+getTelefone());
+        System.out.println("Nome: " + getNome());
+        System.out.println("CPF: " + getCpf());
+        System.out.println("E-mail: " + getEmail());
+        System.out.println("Profissão: " + getProfissao());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.println("Endereco: "+ getEndereco());
         System.out.println("=======================");
     }
 

@@ -10,6 +10,12 @@ public class Produto {
         return nome;
     }
 
+    public Produto(String nome, String descricao, double precoUnitario, int quantidade) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.precoUnitario = precoUnitario;
+        this.quantidade = quantidade;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;

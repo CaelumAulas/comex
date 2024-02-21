@@ -63,15 +63,24 @@ public class Endereco {
     }
 
 
-    public void informaEndereco(){
-        System.out.println(">> Endereço:");
-        System.out.println("Bairro: "+getBairro());
-        System.out.println("Cidade: "+getCidade());
-        System.out.println("Complemento: "+getComplemento());
-        System.out.println("Rua: "+getRua());
-        System.out.println("Número: "+getNumero());
-
+    public Endereco(String bairro, String cidade, String complemento, String estado, String rua, int numero) {
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.complemento = complemento;
+        this.estado = estado;
+        this.rua = rua;
+        this.numero = numero;
     }
 
-
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", estado='" + estado + '\'' +
+                ", rua='" + rua + '\'' +
+                ", numero=" + numero +
+                '}';
+    }
 }
