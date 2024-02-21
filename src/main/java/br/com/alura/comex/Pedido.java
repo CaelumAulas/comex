@@ -16,7 +16,16 @@ public class Pedido {
 
     private LocalDate data;
 
-    public Pedido(String categoria, Produto produto, Cliente cliente, BigDecimal preco, int quantidade, LocalDate data) {
+    public Pedido(int id, Cliente cliente, BigDecimal preco, int quantidade, Produto produto, LocalDate data) {
+        this.id = id;
+        this.cliente = cliente;
+        this.produto = produto;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.data = data;
+    }
+
+    public Pedido(int id, String categoria, Produto produto, Cliente cliente, BigDecimal preco, int quantidade, LocalDate data) {
         this.categoria = categoria;
         this.produto = produto;
         this.cliente = cliente;
@@ -24,6 +33,13 @@ public class Pedido {
         this.quantidade = quantidade;
         this.data = data;
     }
+
+    public String getNomeProduto() {
+        return produto.getNome();
+    }
+
+    public String getNomeCliente() { return cliente.getNome();}
+
 
     public String getCategoria() {
         return categoria;
