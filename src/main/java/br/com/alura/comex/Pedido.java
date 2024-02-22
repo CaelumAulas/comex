@@ -3,7 +3,8 @@ package br.com.alura.comex;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Pedido {
+public class Pedido implements Comparable<Pedido>{
+
     private int id;
 
     private String categoria;
@@ -64,17 +65,32 @@ public class Pedido {
     public LocalDate getData() {
         return data;
     }
+    public boolean isMaisCaroQue(Pedido outroPedido){
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0;
+    }
+    public boolean isMaisBaratoQue(Pedido outroPedido){
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0;
+    }
 
+
+    public BigDecimal getValorTotal(){
+        return this.preco.multiply(BigDecimal.valueOf(quantidade));
+    }
     @Override
     public String toString() {
         return "Pedido{" +
-                "categoria='" + categoria + '\'' +
-                ", produto='" + produto + '\'' +
-                ", cliente='" + cliente + '\'' +
+                "id=" + id +
+                ", cliente=" + cliente.getNome() +
+                ", produto=" + produto.getNome() +
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
                 ", data=" + data +
+                ", ValorTotal=" + getValorTotal() +
                 '}';
     }
 
+    @Override
+    public int compareTo(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal());
+    }
 }
