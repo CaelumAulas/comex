@@ -21,6 +21,9 @@ public class Cliente {
         this.email = email;
     }
 
+    public Cliente(String s, String s1, String mail, String profissãoDoCliente, String s2, Endereco endereco) {
+    }
+
     // Métodos getters e setters
     public String getNome() {
         return nome;
