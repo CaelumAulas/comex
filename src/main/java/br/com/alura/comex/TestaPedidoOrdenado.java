@@ -31,8 +31,8 @@ public class TestaPedidoOrdenado {
 
 
         Collections.sort(pedidos);
-        System.out.println("Pedido mais caro: "+pedidos.get(0));
-        System.out.println("Pedido mais barato: "+pedidos.get(4));
+        System.out.println("Pedido mais caro: "+pedidos.get(4));
+        System.out.println("Pedido mais barato: "+pedidos.get(0));
 
 
     }
