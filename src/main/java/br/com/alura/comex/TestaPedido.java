@@ -8,7 +8,7 @@ import static br.com.alura.comex.Pedido.fichaProduto;
 public class TestaPedido {
     public static void main(String[] args) {
         //Produtos
-        Produto produto1 = new Produto("Teclado", "Mecânico", 120, 1);
+        Produto produto1 = new Produto("Teclado", "Mecânico",120, 1);
         Produto produto2 = new Produto("Mouse", "Com led", 70, 2);
         Produto produto3 = new Produto("Monitor", "21 Polegadas", 420, 1);
 

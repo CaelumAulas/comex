@@ -1,9 +1,10 @@
 package br.com.alura.comex;
 
+import javax.print.attribute.standard.Compression;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Pedido {
+public class Pedido implements Comparable<Pedido> {
 
     private int id;
     private Cliente cliente;
@@ -14,7 +15,9 @@ public class Pedido {
     private LocalDate data;
 
     public Pedido() {
-    };
+    }
+
+    ;
 
     public int getId() {
         return id;
@@ -73,15 +76,17 @@ public class Pedido {
         this.data = data;
     }
 
+
     @Override
     public String toString() {
         return "Pedido{" +
                 "id=" + id +
+                ", cliente=" + cliente.getNome() +
+                ", produto=" + produto.getNome() +
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
                 ", data=" + data +
-                ", produto=" + produto +
-                ", cliente=" + cliente +
+                ", ValorTotal=" + getValorTotal() +
                 '}';
     }
 
@@ -90,5 +95,22 @@ public class Pedido {
         System.out.println(">> Nome do cliente: " + pedido.getCliente().getNome());
         System.out.println(">> Preço: " + pedido.getPreco());
         System.out.println(">> Data: " + pedido.getData());
+    }
+
+    public boolean isMaisBaratoQue(Pedido outroPedido) {
+        return this.preco.compareTo(outroPedido.getValorTotal()) < 0;
+    }
+
+    public boolean isMaisCaroQue(Pedido outroPedido) {
+        return this.preco.compareTo(outroPedido.getValorTotal()) > 0;
+    }
+
+    public BigDecimal getValorTotal() {
+        return preco.multiply(BigDecimal.valueOf(quantidade));
+    }
+
+    @Override
+    public int compareTo(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal());
     }
 }
