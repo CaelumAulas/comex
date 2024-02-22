@@ -24,5 +24,15 @@ public class TestePedido{
         System.out.println(pedido1.getPreco());
         System.out.println(pedido1.getData());
 
+        System.out.println(pedido2.getNomeProduto());
+        System.out.println(pedido2.getNomeCliente());
+        System.out.println(pedido2.getPreco());
+        System.out.println(pedido2.getData());
+
+        System.out.println(pedido3.getNomeProduto());
+        System.out.println(pedido3.getNomeCliente());
+        System.out.println(pedido3.getPreco());
+        System.out.println(pedido3.getData());
+
     }
 }
