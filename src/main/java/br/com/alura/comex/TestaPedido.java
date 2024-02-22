@@ -20,7 +20,11 @@ public class TestaPedido {
         Pedido pedido2 = new Pedido(2, cliente, produto2, new BigDecimal(100), 1, LocalDate.now());
         Pedido pedido3 = new Pedido(3, cliente, produto3, new BigDecimal(150), 1, LocalDate.now());
 
+        fichaProduto(pedido1);
+        System.out.println("============");
         fichaProduto(pedido2);
+        System.out.println("============");
+        fichaProduto(pedido3);
 
     }
 
