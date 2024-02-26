@@ -5,16 +5,18 @@ import java.time.LocalDate;
 
 public class Pedido {
 
+    private int id;
     private String categoria;
-    private String produto;
-    private String cliente;
+    private Produto produto;
+    private Cliente cliente;
 
     private BigDecimal preco;
     private int quantidade;
 
     private LocalDate data;
 
-    public Pedido(String categoria, String produto, String cliente, BigDecimal preco, int quantidade, LocalDate data) {
+    public Pedido(int id, String categoria, Produto produto, Cliente cliente, BigDecimal preco, int quantidade, LocalDate data) {
+        this.id = id;
         this.categoria = categoria;
         this.produto = produto;
         this.cliente = cliente;
@@ -23,15 +25,19 @@ public class Pedido {
         this.data = data;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getCategoria() {
         return categoria;
     }
 
-    public String getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
-    public String getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
