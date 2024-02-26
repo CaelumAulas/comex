@@ -62,7 +62,20 @@ public class Pedido {
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
                 ", data=" + data +
+                ", valorTotal=" + this.getValorTotal() +
                 '}';
+    }
+
+    public boolean isMaisBaratoQue(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) < 0;
+    }
+
+    public boolean isMaisCaroQue(Pedido outroPedido) {
+        return this.getValorTotal().compareTo(outroPedido.getValorTotal()) > 0;
+    }
+
+    public BigDecimal getValorTotal() {
+        return this.preco.multiply(BigDecimal.valueOf(this.quantidade));
     }
 
 }
