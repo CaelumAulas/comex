@@ -18,10 +18,6 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public static Endereco fromJson(String json) {
-        return null;
-    }
-
     // Métodos getters e setters
     public String getBairro() {
         return bairro;
