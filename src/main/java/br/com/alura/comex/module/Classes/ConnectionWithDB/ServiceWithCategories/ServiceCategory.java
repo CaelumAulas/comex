@@ -1,10 +1,8 @@
 package br.com.alura.comex.module.Classes.ConnectionWithDB.ServiceWithCategories;
 
-import br.com.alura.comex.module.Classes.Client;
+import br.com.alura.comex.module.Classes.Category;
 import br.com.alura.comex.module.Classes.ConnectionWithDB.ConnectionFactory;
-import br.com.alura.comex.module.Classes.ConnectionWithDB.ServiceWithClient.DAOAccount;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.Set;
 
@@ -14,74 +12,34 @@ public class ServiceCategory {
     public ServiceCategory() {
         this.connection = new ConnectionFactory();
     }
-    public void openAccount(Client client) {
+    public void openCategory(Category category) {
         Connection conn = connection.reconnection();
-        new DAOCategory(conn).save(client);
+        new DAOCategory(conn).save(category);
     }
 
-    public Set<Client> showAccount(){
+    public Set<Category> showAccount(){
         Connection conn = connection.reconnection();
         return new DAOCategory(conn).show();
     }
 
-    private void alterAccount(Client clientId, BigDecimal bigDecimal){
+    private void alterCategory(Category categoryId){
         Connection conn = connection.reconnection();
-        new DAOCategory(conn).alter(clientId.getId(), bigDecimal);
+        new DAOCategory(conn).alter(categoryId.getId(),categoryId.getDescription());
     }
 
-    public void makeDeposit(int idAccount, BigDecimal value) {
-        Client account = findWithId(idAccount);
-
-        if (value.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException("Valor do deposito deve ser superior a zero!");
-        }
-
-        BigDecimal newValue = account.getMoney().add(value);
-        alterAccount(account, newValue);
-    }
-
-    public void makeWithdrawal(int idAccount, BigDecimal value) {
-        var account = findWithId(idAccount);
-        BigDecimal moneyAccount = account.getMoney();
-
-        if (value.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException("Valor do saque deve ser superior a zero!");
-        }
-        double result = value.compareTo(moneyAccount);
-        if (result > 0){
-            throw new RuntimeException("O valor de saque não pode ser maior do que o valor na conta!");
-        }
-
-        BigDecimal newValue = account.getMoney().subtract(value);
-        alterAccount(account, newValue);
-        System.out.println("Saque realizado com sucesso!");
-    }
-
-    public void transferMoney(int numberAccountPay, int numberAccountReceive,
-                              BigDecimal value) {
-        makeWithdrawal(numberAccountPay, value);
-        makeDeposit(numberAccountReceive, value);
-    }
-
-    private Client findWithId(int number) {
+    private Category findWithId(int number) {
         Connection conn = connection.reconnection();
-        Client client = new DAOCategory(conn).clientListener(number);
-        if(client != null) {
-            return client;
+        Category category = new DAOCategory(conn).categoryListener(number);
+        if(category != null) {
+            return category;
         } else {
             throw new RuntimeException("Não existe conta cadastrada com esse número!");
         }
     }
 
-    public void deleteAccount(int idAccount){
-        var account = findWithId(idAccount);
-        if (account.moneyInAccount()) {
-            throw new RuntimeException("A conta não pode ser encerrada porque ainda possui saldo");
-        }
-
+    public void deleteCategory(int idCategory){
+        var account = findWithId(idCategory);
         Connection conn = connection.reconnection();
-
-        new DAOCategory(conn).delete(idAccount);
+        new DAOCategory(conn).delete(idCategory);
     }
 }
-

@@ -1,5 +1,6 @@
 package br.com.alura.comex.module.Classes.ConnectionWithDB.ServiceWithCategories;
 
+import br.com.alura.comex.module.Classes.Category;
 import br.com.alura.comex.module.Classes.Client;
 
 import java.math.BigDecimal;
@@ -13,20 +14,16 @@ public class DAOCategory {
         this.conn = connection;
     }
 
-    public void save(Client client){
-        Client newClient = new Client(client.getId(),client.getMoney(),client.getName(),client.getCpf(),client.getEmail());
+    public void save(Category category){
+        Category category1 = new Category(category.getName(), category.getDescription());
 
-        String sql = "INSERT INTO conta (numero, saldo, cliente_nome, cliente_cpf, cliente_email)" +
-                "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO categoria (nome, descricao) VALUES (?, ?)";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setInt(1, newClient.getId());
-            preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
-            preparedStatement.setString(3, newClient.getName());
-            preparedStatement.setString(4, newClient.getCpf());
-            preparedStatement.setString(5, newClient.getEmail());
+            preparedStatement.setString(1,category1.getName());
+            preparedStatement.setString(2, category1.getDescription());
 
             preparedStatement.execute();
             preparedStatement.close();
@@ -36,23 +33,21 @@ public class DAOCategory {
         }
     }
 
-    public Set<Client> show(){
+    public Set<Category> show(){
         PreparedStatement ps;
         ResultSet rs;
-        Set<Client> clients = new HashSet<>();
-        String sql = "SELECT * from conta";
+        Set<Category> categories = new HashSet<>();
+        String sql = "SELECT * from categoria";
 
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
                 int id = rs.getInt(1);
-                BigDecimal money = rs.getBigDecimal(2);
-                String name = rs.getString(3);
-                String cpf = rs.getString(4);
-                String email = rs.getString(5);
+                String name = rs.getString(2);
+                String description = rs.getString(3);
 
-                clients.add(new Client(id,money,name,cpf,email));
+                categories.add(new Category(id,name,description));
             }
 
             rs.close();
@@ -61,18 +56,18 @@ public class DAOCategory {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return clients;
+        return categories;
     }
 
-    public void alter(int number, BigDecimal bigDecimal) {
+    public void alter(int number, String description) {
         PreparedStatement ps;
-        String sql = "UPDATE conta SET saldo = ? WHERE numero = ?";
+        String sql = "UPDATE categoria SET descricao = ? WHERE id = ?";
 
         try {
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
 
-            ps.setBigDecimal(1, bigDecimal);
+            ps.setString(1, description);
             ps.setInt(2, number);
 
             ps.execute();
@@ -88,24 +83,22 @@ public class DAOCategory {
         }
     }
 
-    public Client clientListener(Integer numero) {
-        String sql = "SELECT * FROM conta WHERE numero = " + numero;
+    public Category categoryListener(Integer numero) {
+        String sql = "SELECT * FROM conta WHERE id = " + numero;
 
         Statement ps;
         ResultSet rs;
-        Client client = null;
+        Category category = null;
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery(sql);
 
             while (rs.next()) {
                 int idFind = rs.getInt(1);
-                BigDecimal money = rs.getBigDecimal(2);
-                String name = rs.getString(3);
-                String cpf = rs.getString(4);
-                String email = rs.getString(5);
+                String name = rs.getString(2);
+                String description = rs.getString(3);
 
-                client = new Client(idFind,money,name,cpf,email);
+                category = new Category(idFind,name,description);
             }
             rs.close();
             ps.close();
@@ -113,11 +106,11 @@ public class DAOCategory {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return client;
+        return category;
     }
 
     public void delete(int idAccount){
-        String sql = "DELETE FROM conta WHERE numero = ?";
+        String sql = "DELETE FROM categoria WHERE numero = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
