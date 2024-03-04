@@ -17,19 +17,26 @@ public class ServiceCategory {
         new DAOCategory(conn).save(category);
     }
 
-    public Set<Category> showAccount(){
+    public Set<Category> showCategory(){
         Connection conn = connection.reconnection();
         return new DAOCategory(conn).show();
     }
 
-    private void alterCategory(Category categoryId){
+    public void alterDescription(int number, String update){
         Connection conn = connection.reconnection();
-        new DAOCategory(conn).alter(categoryId.getId(),categoryId.getDescription());
+        String sql = "UPDATE categoria SET descricao = ? WHERE id = ?";
+        new DAOCategory(conn).alter(sql, number,update);
     }
 
-    private Category findWithId(int number) {
+    public void alterName(int number, String update){
         Connection conn = connection.reconnection();
-        Category category = new DAOCategory(conn).categoryListener(number);
+        String sql = "UPDATE categoria SET nome = ? WHERE id = ?";
+        new DAOCategory(conn).alter(sql,number,update);
+    }
+
+    private Category findWithId(String name) {
+        Connection conn = connection.reconnection();
+        Category category = new DAOCategory(conn).categoryListener(name);
         if(category != null) {
             return category;
         } else {
@@ -37,9 +44,9 @@ public class ServiceCategory {
         }
     }
 
-    public void deleteCategory(int idCategory){
-        var account = findWithId(idCategory);
+    public void deleteCategory(String nameCategory){
+        var account = findWithId(nameCategory);
         Connection conn = connection.reconnection();
-        new DAOCategory(conn).delete(idCategory);
+        new DAOCategory(conn).delete(nameCategory);
     }
 }

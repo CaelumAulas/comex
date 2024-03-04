@@ -1,9 +1,7 @@
 package br.com.alura.comex.module.Classes.ConnectionWithDB.ServiceWithCategories;
 
 import br.com.alura.comex.module.Classes.Category;
-import br.com.alura.comex.module.Classes.Client;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -59,15 +57,14 @@ public class DAOCategory {
         return categories;
     }
 
-    public void alter(int number, String description) {
+    public void alter(String sql, int number, String update) {
         PreparedStatement ps;
-        String sql = "UPDATE categoria SET descricao = ? WHERE id = ?";
 
         try {
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, description);
+            ps.setString(1, update);
             ps.setInt(2, number);
 
             ps.execute();
@@ -83,8 +80,8 @@ public class DAOCategory {
         }
     }
 
-    public Category categoryListener(Integer numero) {
-        String sql = "SELECT * FROM conta WHERE id = " + numero;
+    public Category categoryListener(String name) {
+        String sql = "SELECT * FROM conta WHERE nome = " + name;
 
         Statement ps;
         ResultSet rs;
@@ -94,11 +91,11 @@ public class DAOCategory {
             rs = ps.executeQuery(sql);
 
             while (rs.next()) {
-                int idFind = rs.getInt(1);
-                String name = rs.getString(2);
+                int id = rs.getInt(1);
+                String nameString = rs.getString(2);
                 String description = rs.getString(3);
 
-                category = new Category(idFind,name,description);
+                category = new Category(id,nameString,description);
             }
             rs.close();
             ps.close();
@@ -109,13 +106,13 @@ public class DAOCategory {
         return category;
     }
 
-    public void delete(int idAccount){
-        String sql = "DELETE FROM categoria WHERE numero = ?";
+    public void delete(String nameCategory){
+        String sql = "DELETE FROM categoria WHERE nome = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setInt(1, idAccount);
+            ps.setString(1, nameCategory);
 
             ps.execute();
             ps.close();
