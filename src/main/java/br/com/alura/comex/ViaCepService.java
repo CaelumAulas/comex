@@ -9,8 +9,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public abstract class ViaCepApi {
-    public static <ViaCepResponse> ViaCepResponse getAddr (String cep) throws IOException, InterruptedException {
+public abstract class ViaCepService {
+    public static ViaCepResponse getAddr (String cep) throws IOException, InterruptedException {
         String url = String.format("https://viacep.com.br/ws/%s/json/", cep);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
