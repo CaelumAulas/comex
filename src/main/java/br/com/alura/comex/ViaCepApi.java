@@ -1,6 +1,7 @@
 package br.com.alura.comex;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,6 +16,16 @@ public abstract class ViaCepApi {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         Gson gson = new Gson();
+        if (response.statusCode() == 400) {
+            throw new RuntimeException("O cep informado é inválido");
+        } else if (response.statusCode() == 404) {
+            throw new RuntimeException("A url informada é inválida");
+        } else if (response.statusCode() == 200) {
+            JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
+            if (jsonResponse.has("erro") && jsonResponse.get("erro").getAsBoolean()) {
+                throw new RuntimeException("CEP não encontrado na base de dados");
+            }
+        }
         return gson.fromJson(response.body(), ViaCepResponse.class);
     }
 }
