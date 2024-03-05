@@ -1,9 +1,22 @@
-public class Endereco {
+import com.google.gson.annotations.SerializedName;
+import java.io.IOException;
+
+public class Endereco implements Comparable<Endereco> {
+
+        @SerializedName("CEP")
         private String cep;
+
+        @SerializedName("Logradouro")
         private String logradouro;
+
+        @SerializedName("Complemento")
         private String complemento;
+        @SerializedName("Bairro")
         private String bairro;
+        @SerializedName("Localidade")
         private String localidade;
+
+        @SerializedName("UF")
         private String uf;
 
     public String getCep() {
@@ -54,21 +67,20 @@ public class Endereco {
         this.uf = uf;
     }
 
-    public void buscaEnderecoPorCep(String cep) {
-        ViaCepResponse retorno = this.preencheEnderecoCompleto(retorno);
-    }
-    public void preencheEnderecoCompleto(ViaCepResponse model) {
-        // atribuir os dados de retorno nos atributos de endereço
+    @Override
+    public int compareTo(Endereco outroEndereco) {
+        return this.getCep().compareTo(outroEndereco.getCep());
     }
 
-
-
-
-    https://viacep.com.br/ws/01941230/json/
-    {
-        "erro": true
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "CEP='" + cep + '\'' +
+                ", Logradouro='" + logradouro + '\'' +
+                ", Complemento='" + complemento + '\'' +
+                ", Bairro='" + bairro + '\'' +
+                ", Localidade='" + localidade + '\'' +
+                ", UF='" + uf + '\'' +
+                '}';
     }
-
-    https://viacep.com.br/ws/99999999999/json/
-
 }

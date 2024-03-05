@@ -1,9 +1,6 @@
 package Integracao;
 
-public class ViaCepService {
+import java.io.IOException;
 
-    try {
-    }
-    catch (Exception) {
-    }
+public class ViaCepService {
 }
