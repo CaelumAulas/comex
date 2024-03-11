@@ -6,6 +6,13 @@ public class Produto {
     private double precoUnitario;
     private int quantidade;
 
+    public Produto(String nome, String descricao, double precoUnitario, int quantidade) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.precoUnitario = precoUnitario;
+        this.quantidade = quantidade;
+    }
+
     public String getNome() {
         return nome;
     }

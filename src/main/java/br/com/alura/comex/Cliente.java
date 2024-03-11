@@ -1,12 +1,23 @@
 package br.com.alura.comex;
 
-public class Cliente {
+import br.com.alura.comex.Identificacoes.Identificacao;
+
+public class Cliente implements Identificacao {
     private String nome;
     private String cpf;
     private String email;
     private String profissao;
     private String telefone;
     private Endereco endereco;
+
+    public Cliente(String nome, String cpf, String email, String profissao, String telefone, Endereco endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.profissao = profissao;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     public String getNome() {
         return nome;
@@ -20,9 +31,9 @@ public class Cliente {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+//    public void setCpf(String cpf) {
+//        this.cpf = cpf;
+//    }
 
     public String getEmail() {
         return email;
@@ -54,5 +65,10 @@ public class Cliente {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public String getIdentificacao() {
+        return "O Nome do cliente é: " + this.getNome() + " e o CPF é: " + this.getCpf();
     }
 }
