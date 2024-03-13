@@ -15,7 +15,7 @@ public class Endereco {
 
     public void buscaEnderecoPorCep(String cep) {
         try {
-            APIViaCepResponse retorno = APIViaJava.getAddress(cep);
+            APIViaCepResponse retorno = APIViaCep.getAddress(cep);
             preencheEnderecoCompleto(retorno);
         } catch (Exception e) {
             System.out.println("Erro ao buscar o endereço pelo CEP: " + e.getMessage());
