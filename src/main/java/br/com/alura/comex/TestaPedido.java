@@ -12,7 +12,8 @@ public class TestaPedido {
         Produto produto3 = new Produto("Produto 3", "Descrição do Produto 3", 300.0, 30);
 
         // Criar cliente
-        Cliente cliente = new Cliente("Cliente 1", "123.456.789-00", "cliente1@email.com", "Profissão do Cliente", "9999-9999", new Endereco("Bairro", "Cidade", "Complemento", "Estado", "Rua", 123));
+        Cliente cliente = new Cliente("Cliente 1", "123.456.789-00", "cliente1@email.com", "Profissão do Cliente",
+                "9999-9999", new Endereco("71680349"));
 
         // Criar pedidos
         Pedido pedido1 = new Pedido(1, cliente, new BigDecimal("100.0"), 1, produto1, LocalDate.now());

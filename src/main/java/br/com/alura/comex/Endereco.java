@@ -9,13 +9,25 @@ public class Endereco {
     private String rua;
     private int numero;
 
-    public Endereco(String bairro, String cidade, String complemento, String estado, String rua, int numero) {
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.complemento = complemento;
-        this.estado = estado;
-        this.rua = rua;
-        this.numero = numero;
+    public Endereco(String cep) {
+        buscaEnderecoPorCep(cep);
+    }
+
+    public void buscaEnderecoPorCep(String cep) {
+        try {
+            APIViaCepResponse retorno = APIViaJava.getAddress(cep);
+            preencheEnderecoCompleto(retorno);
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar o endereço pelo CEP: " + e.getMessage());
+        }
+    }
+
+    public void preencheEnderecoCompleto(APIViaCepResponse retorno) {
+        this.bairro = retorno.bairro();
+        this.cidade = retorno.localidade();
+        this.complemento = retorno.complemento();
+        this.estado = retorno.uf();
+        this.rua = retorno.logradouro();
     }
 
     public String getBairro() {
