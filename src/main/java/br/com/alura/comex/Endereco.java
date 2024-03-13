@@ -1,58 +1,44 @@
 package br.com.alura.comex;
 
+import br.com.alura.comex.api.ViaCEPService;
+import br.com.alura.comex.api.record.ViaCEPResponse;
+
 public class Endereco {
-    private String Bairro;
-    private String Cidade;
-    private String Complemento;
-    private String Estado;
-    private String Rua;
-    private int Número;
+    private String cep;
+    private String bairro;
+    private String logradouro;
+    private String complemento;
+    private String localidade;
+    private String uf;
 
-    public String getBairro() {
-        return Bairro;
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", localidade='" + localidade + '\'' +
+                ", uf='" + uf + '\'' +
+                '}';
     }
 
-    public void setBairro(String bairro) {
-        Bairro = bairro;
+    public Endereco(String cep){
+        this.cep = cep;
     }
 
-    public String getCidade() {
-        return Cidade;
+    private void buscaEnderecoPorCep(String cep) {
+        ViaCEPResponse viaCepResponse = ViaCEPService.busca(cep);
+        this.preencheEnderecoCompleto(viaCepResponse);
+    }
+    private void preencheEnderecoCompleto(ViaCEPResponse viaCEPResponse) {
+        this.uf = viaCEPResponse.uf();
+        this.bairro = viaCEPResponse.bairro();
+        this.localidade = viaCEPResponse.localidade();
+        this.complemento = viaCEPResponse.complemento();
+        this.cep = viaCEPResponse.cep();
+        this.logradouro = viaCEPResponse.logradouro();
     }
 
-    public void setCidade(String cidade) {
-        Cidade = cidade;
-    }
 
-    public String getComplemento() {
-        return Complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        Complemento = complemento;
-    }
-
-    public String getEstado() {
-        return Estado;
-    }
-
-    public void setEstado(String estado) {
-        Estado = estado;
-    }
-
-    public String getRua() {
-        return Rua;
-    }
-
-    public void setRua(String rua) {
-        Rua = rua;
-    }
-
-    public int getNúmero() {
-        return Número;
-    }
-
-    public void setNúmero(int número) {
-        Número = número;
-    }
 }
