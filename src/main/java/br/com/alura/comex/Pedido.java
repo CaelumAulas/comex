@@ -24,26 +24,32 @@ public class Pedido {
     }
 
     public String getCategoria() {
+
         return categoria;
     }
 
     public String getProduto() {
+
         return produto;
     }
 
     public String getCliente() {
+
         return cliente;
     }
 
     public BigDecimal getPreco() {
+
         return preco;
     }
 
     public int getQuantidade() {
+
         return quantidade;
     }
 
     public LocalDate getData() {
+
         return data;
     }
 
