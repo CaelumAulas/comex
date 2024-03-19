@@ -1,13 +1,9 @@
 package br.com.alura.comex;
 
-import java.math.BigDecimal;
-
-public class Produto {
+public class Categoria {
     private Integer id;
     private String nome;
     private String descricao;
-    private Integer numero;
-    private BigDecimal precoUnitario;
 
     public Integer getId() {
         return id;
@@ -32,20 +28,5 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public BigDecimal getPrecoUnitario() {
-        return precoUnitario;
-    }
-
-    public void setPrecoUnitario(BigDecimal precoUnitario) {
-        this.precoUnitario = precoUnitario;
-    }
 }
+
