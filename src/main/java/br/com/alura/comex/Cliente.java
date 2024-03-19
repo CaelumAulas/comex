@@ -1,30 +1,22 @@
 package br.com.alura.comex;
 
 public class Cliente {
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
     private String profissao;
     private String telefone;
-    private Endereco endereco;
+    private String cep;
 
-    // Construtor da classe Cliente com nome e cpf obrigatórios
-    public Cliente(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+    public Integer getId() {
+        return id;
     }
 
-    // Construtor da classe Cliente com nome, cpf e e-mail obrigatórios
-    public Cliente(String nome, String cpf, String email) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Cliente(String s, String s1, String mail, String profissãoDoCliente, String s2, Endereco endereco) {
-    }
-
-    // Métodos getters e setters
     public String getNome() {
         return nome;
     }
@@ -65,11 +57,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getCep() {
+        return cep;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 }
