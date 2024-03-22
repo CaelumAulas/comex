@@ -1,4 +1,6 @@
-package br.com.alura.comex;
+package br.com.alura.comex.main;
+
+import br.com.alura.comex.model.Cliente;
 
 public class Teste {
     public static void main(String[] args) {

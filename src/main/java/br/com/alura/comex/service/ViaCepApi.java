@@ -1,5 +1,6 @@
-package br.com.alura.comex;
+package br.com.alura.comex.service;
 
+import br.com.alura.comex.model.ViaCepResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 

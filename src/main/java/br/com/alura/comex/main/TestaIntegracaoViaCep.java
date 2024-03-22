@@ -1,4 +1,6 @@
-package br.com.alura.comex;
+package br.com.alura.comex.main;
+
+import br.com.alura.comex.service.ViaCepApi;
 
 import java.io.IOException;
 
